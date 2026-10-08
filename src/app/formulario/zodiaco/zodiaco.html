@@ -1,0 +1,39 @@
+<div style="display: flex; max-width: 900px; margin: 40px auto; padding: 20px;">
+    <div style="padding: 100px;">
+        
+        <h1 style="text-align: center; margin-top: 0;">Datos Personales</h1><br><br>
+        <label>Nombre: </label>
+        <input type="text" [(ngModel)]="nombre"><br><br>
+        
+        <label>Apaterno: </label>
+        <input type="text" [(ngModel)]="apaterno"><br><br>
+        
+        <label>Amaterno: </label>
+        <input type="text" [(ngModel)]="amaterno"><br><br>
+
+        <h3>Fecha de nacimiento</h3>
+        <div>
+            <input type="number" [(ngModel)]="dia" placeholder="Día" style="width: 60px;">
+            <input type="number" [(ngModel)]="mes" placeholder="Mes" style="width: 60px;">
+            <input type="number" [(ngModel)]="anio" placeholder="Año" style="width: 80px;">
+        </div><br>
+
+        <h3>sexo</h3>
+        <div>
+            <label><input type="radio" name="sexo" [(ngModel)]="sexo" value="Masculino"> Masculino</label><br>
+            <label><input type="radio" name="sexo" [(ngModel)]="sexo" value="Femenino"> Femenino</label>
+        </div><br>
+
+        <button (click)="calcular()">imprimir</button>
+    </div>
+
+    <div style="border-left: 3px solid black; margin: 10px 0;"></div>
+
+    <div *ngIf="resultado" style="flex: -2; padding: 140px; text-align: center; padding-top: 100px;">
+        <h1 style="font-style: italic;">Hola {{ nombreC }}</h1>
+        <p style="font-style: italic;">Tienes {{ edad }} años</p>
+        <p style="font-style: italic;">tu signo zodiacal es</p>
+        <img [src]="imagenSigno" alt="Signo Chino" width="150">
+        <p style="font-style: italic;">Es {{ signo }}</p>
+    </div>
+</div>
