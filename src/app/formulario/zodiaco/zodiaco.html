@@ -1,4 +1,4 @@
-<div style="display: flex; max-width: 900px; margin: 40px auto; padding: 20px;">
+<div style="display: flex; max-width: 900px; margin: 10px auto; padding: 20px;">
     <div style="padding: 100px;">
         
         <h1 style="text-align: center; margin-top: 0;">Datos Personales</h1><br><br>
@@ -30,10 +30,10 @@
     <div style="border-left: 3px solid black; margin: 10px 0;"></div>
 
     <div *ngIf="resultado" style="flex: -2; padding: 140px; text-align: center; padding-top: 100px;">
-        <h1 style="font-style: italic;">Hola {{ nombreC }}</h1>
-        <p style="font-style: italic;">Tienes {{ edad }} años</p>
-        <p style="font-style: italic;">tu signo zodiacal es</p>
-        <img [src]="imagenSigno" alt="Signo Chino" width="150">
+        <h1 style="font-style: italic;">Hola {{ nombreC }}</h1> <br>
+        <p style="font-style: italic;">Tienes {{ edad }} años</p> <br>
+        <p style="font-style: italic;">Tu signo zodiacal es</p> <br>
+        <img [src]="imagenSigno" alt="Signo Chino" width="300"> <br>
         <p style="font-style: italic;">Es {{ signo }}</p>
     </div>
 </div>

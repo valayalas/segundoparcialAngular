@@ -5,7 +5,7 @@ import { Navbar } from './navbar/navbar';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  imports: [Navbar, RouterOutlet], // <-- Solo dejamos Navbar y RouterOutlet
+  imports: [Navbar, RouterOutlet],
   standalone: true,
   selector: 'app-root',
   templateUrl: './app.html',
