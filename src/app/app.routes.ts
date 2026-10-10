@@ -17,7 +17,8 @@ export const routes: Routes = [
                     import('./formulario/zodiaco/zodiaco').then(
                         (c) => c.Zodiaco
                     ),
-            }
+            },
+            
         ]
     },
     {
@@ -29,7 +30,22 @@ export const routes: Routes = [
                     import('./escuela/listaescuela/listaescuela').then(
                         (c) => c.Listaescuela
                     ),
-            }
+            },
+            {
+                path: 'cinepolis',
+                loadComponent: () =>
+                    import('./escuela/cinepolis/cinepolis').then(
+                        (c) => c.Cinepolis
+                    ),
+            },
+            {
+                path: 'ventas',
+                loadComponent: () =>
+                    import('./escuela/ventas/ventas').then(
+                        (c) => c.Ventas
+                    ),
+            },
+            
         ]
     },
 
