@@ -1,0 +1,152 @@
+<div class="max-w-6xl mx-auto p-6">
+
+  <!-- FORMULARIO DE VENTAS -->
+  <div *ngIf="mostrarFormulario" class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow mb-8 border border-gray-200">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">
+      {{ indiceEdicion !== -1 ? 'Editar Venta' : 'Registrar Venta' }}
+    </h2>
+
+    <form [formGroup]="formulario" (ngSubmit)="muestraAlumno()">
+
+      <!-- Nombre -->
+      <div class="mb-5">
+        <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          formControlName="nombre"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="Nombre del cliente"
+        >
+      </div>
+
+      <!-- Compradores -->
+      <div class="mb-5">
+        <label for="compradores" class="block mb-2 text-sm font-medium text-gray-900">Compradores</label>
+        <input
+          type="number"
+          id="compradores"
+          formControlName="compradores"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        >
+      </div>
+
+      <!-- Boletos -->
+      <div class="mb-5">
+        <label for="boletos" class="block mb-2 text-sm font-medium text-gray-900">Boletos</label>
+        <input
+          type="number"
+          id="boletos"
+          formControlName="boletos"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        >
+      </div>
+
+      <!-- Tarjeta CIDECO -->
+      <div class="mb-5">
+        <label for="tarjeta" class="block mb-2 text-sm font-medium text-gray-900">Tarjeta CIDECO</label>
+        <select
+          id="tarjeta"
+          formControlName="tarjeta"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        >
+          <option value="Si">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <!-- Total -->
+      <div class="mb-5">
+        <label for="total" class="block mb-2 text-sm font-medium text-gray-900">Total ($)</label>
+        <input
+          type="text"
+          id="total"
+          formControlName="total"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        >
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="flex justify-end gap-3 mt-5">
+        <button
+          type="submit"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5">
+          Guardar Edicion
+        </button>
+
+        <button
+          type="button"
+          (click)="limpiarCampos()"
+          class="text-gray-700 bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5">
+          Cancelar Edicion
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+
+  <!-- TABLA DE VENTAS -->
+  <div class="max-w-6xl mx-auto mt-8">
+    <h2 class="mb-4 text-2xl font-bold text-gray-900">
+      Ventas registradas
+    </h2>
+    
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-left text-gray-500">
+
+        <!-- Encabezado -->
+        <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+          <tr>
+            <th scope="col" class="px-6 py-3">Nombre</th>
+            <th scope="col" class="px-6 py-3">Compradores</th>
+            <th scope="col" class="px-6 py-3">Boletos</th>
+            <th scope="col" class="px-6 py-3">Tarjeta</th>
+            <th scope="col" class="px-6 py-3">Total</th>
+            <th scope="col" class="px-6 py-3">Acciones</th>
+          </tr>
+        </thead>
+
+        <!-- Datos -->
+        <tbody>
+          <tr *ngFor="let clientes of cliente; let i = index" class="bg-white border-b border-gray-200 hover:bg-gray-50">
+            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ clientes.nombre }}</td>
+            <td class="px-6 py-4">{{ clientes.compradores }}</td>
+            <td class="px-6 py-4">{{ clientes.boletos }}</td>
+            <td class="px-6 py-4">{{ clientes.tarjeta }}</td>
+            <td class="px-6 py-4">{{ clientes.total }}</td>
+            <td class="px-6 py-4">
+              <div class="flex gap-2">
+                <!-- Botón Editar -->
+                <button
+                  type="button"
+                  class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300"
+                  (click)="editarAlumno(i)"
+                >
+                  Editar
+                </button>
+
+                <!-- Botón Eliminar -->
+                <button
+                  type="button"
+                  class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300"
+                  (click)="eliminarAlumno(i)"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <!-- Mensaje cuando no existen registros -->
+    <div *ngIf="cliente.length == 0" class="p-4 mt-4 text-sm text-gray-800 rounded-lg bg-gray-100" role="alert">
+      <span class="font-medium">Información:</span> No hay ventas registradas.
+    </div>
+
+  </div>
+
+</div>

@@ -3,4 +3,5 @@ export interface Cliente {
     compradores: number,
     boletos: number,
     tarjeta: string,
+    total: string,
 }
