@@ -1,0 +1,89 @@
+
+<div class="max-w-7xl mx-auto mt-6 bg-white border border-gray-200 rounded-lg shadow-sm p-6">
+
+  <!-- Botón Agregar -->
+  <div class="mb-4">
+    <button routerLink="/utl/maestros/nuevo" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg flex items-center gap-2 shadow-sm">
+      Agregar
+    </button>
+  </div>
+
+  <!-- Filtro -->
+  <div class="mb-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">
+          Filtrar por:
+        </label>
+      </div>
+
+      <div class="md:col-span-2">
+        <input
+          [(ngModel)]="listFilter"
+          type="text"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          placeholder="Filtrar maestros...">
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabla -->
+  <div class="relative overflow-x-auto rounded-lg border border-gray-200">
+    <table class="w-full text-sm text-left text-gray-500">
+
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+        <tr>
+          <th class="px-6 py-3">ID Maestro</th>
+          <th class="px-6 py-3">Nombre</th>
+          <th class="px-6 py-3">Apaterno</th>
+          <th class="px-6 py-3">Amaterno</th>
+          <th class="px-6 py-3">Correo</th>
+          <th class="px-6 py-3 text-center">Editar</th>
+          <th class="px-6 py-3 text-center">Eliminar</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr
+          *ngFor="let maestro of dataSource | maestroFilter:listFilter"
+          class="bg-white border-b border-gray-200 hover:bg-gray-50">
+
+          <td class="px-6 py-4 font-medium text-gray-900">
+            {{ maestro.idmaestro }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ maestro.nombre | uppercase }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ maestro.apaterno }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ maestro.amaterno }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ maestro.correo }}
+          </td>
+
+          <!-- Botón Editar -->
+          <td class="px-6 py-4 text-center">
+            <button class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-md text-xs font-medium shadow-sm">
+              Editar
+            </button>
+          </td>
+
+          <!-- Botón Eliminar -->
+          <td class="px-6 py-4 text-center">
+            <button class="bg-rose-600 hover:bg-rose-700 text-white px-3 py-1.5 rounded-md text-xs font-medium shadow-sm">
+              Eliminar
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
