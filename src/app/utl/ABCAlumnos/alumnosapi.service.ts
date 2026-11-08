@@ -16,4 +16,16 @@ export class ProyectoapiService {
   agregarNuevoAlumno(datos: AlumnosUTL){
     return this.http.post('http://127.0.0.1:5000/api/alumnos/', datos)
   }
+
+  public getAlumno(mat:string):Observable<any>{console.log("matricula"+ mat)
+    return this.http.get<any>(`http://127.0.0.1:5000/alumnos/${mat}`)
+  }
+
+  modificarAlumno(mat:number,datos:AlumnosUTL){
+    return this.http.put('http://127.0.0.1:5000/alumnos/'+mat,datos)
+  }
+ 
+  public EliminaAlumno(mat:number):Observable<AlumnosUTL>{
+    return this.http.delete<AlumnosUTL>('http://127.0.0.1:5000/alumnos/'+mat)
+  }
 }

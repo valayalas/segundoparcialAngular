@@ -24,4 +24,23 @@ export class MaestrosapiService {
       datos
     );
   }
+
+  public getMaestro(mat:string):Observable<any>{console.log("matricula"+ mat)
+    return this.http.get<any>(
+      `http://127.0.0.1:5000/maestros/${mat}`
+    );
+  }
+
+  modificarMaestro(mat:number,datos:MaestrosUTL){
+    return this.http.put(
+      'http://127.0.0.1:5000/maestros/'+mat,datos
+    );
+  }
+ 
+  public EliminaMaestro(mat:number):Observable<MaestrosUTL>{
+    return this.http.delete<MaestrosUTL>(
+      'http://127.0.0.1:5000/maestros/'+mat
+    );
+  }
+
 }
